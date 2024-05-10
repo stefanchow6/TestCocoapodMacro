@@ -99,11 +99,11 @@ Pod::Spec.new do |spec|
   spec.preserve_paths = ["Classes/macros/StringifyMacros"]
   # 3
   spec.pod_target_xcconfig = {
-    'OTHER_SWIFT_FLAGS' => '-load-plugin-executable ${PODS_ROOT}/StringifyMarco/macros/StringifyMacros#StringifyMacros'
+    'OTHER_SWIFT_FLAGS' => '-load-plugin-executable ${PODS_ROOT}/StringifyMarco/Classes/macros/StringifyMacros#StringifyMacros'
   }
   # 4
   spec.user_target_xcconfig = {
-    'OTHER_SWIFT_FLAGS' => '-load-plugin-executable ${PODS_ROOT}/StringifyMarco/macros/StringifyMacros#StringifyMacros'
+    'OTHER_SWIFT_FLAGS' => '-load-plugin-executable ${PODS_ROOT}/StringifyMarco/Classes/macros/StringifyMacros#StringifyMacros'
   }
   # spec.exclude_files = "Classes/Exclude"
 
