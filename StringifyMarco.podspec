@@ -35,12 +35,15 @@ Pod::Spec.new do |spec|
   spec.swift_version = "5.9"
   # 2
   spec.preserve_paths = ["Macros/StringifyMacros"]
+
+  xcode_config = {
+    'OTHER_SWIFT_FLAGS' => <<-FLAGS.squish
+    -Xfrontend -load-plugin-executable
+    -Xfrontend ${PODS_ROOT}/StringifyMarco/Macros/StringifyMacros#StringifyMacros
+    FLAGS
+  }
   # 3
-  spec.pod_target_xcconfig = {
-    'OTHER_SWIFT_FLAGS' => '-Xfrontend -load-plugin-executable -Xfrontend ${PODS_ROOT}/StringifyMarco/Macros/StringifyMacros#StringifyMacros'
-  }
+  spec.pod_target_xcconfig = xcode_config
   # 4
-  spec.user_target_xcconfig = {
-    'OTHER_SWIFT_FLAGS' => '-Xfrontend -load-plugin-executable -Xfrontend ${PODS_ROOT}/StringifyMarco/Macros/StringifyMacros#StringifyMacros'
-  }
+  spec.user_target_xcconfig = xcode_config
 end
