@@ -83,15 +83,6 @@ Pod::Spec.new do |spec|
 
   spec.source       = { :git => "http://zhangjingjian/StringifyMarco.git", :tag => "#{spec.version}" }
 
-
-  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  CocoaPods is smart about how it includes source code. For source files
-  #  giving a folder will include any swift, h, m, mm, c & cpp files.
-  #  For header files it will include any header in the folder.
-  #  Not including the public_header_files will make all headers public.
-  #
-
   # 1
   spec.source_files = 'Classes/**/*'
   spec.swift_version = "5.9"
@@ -99,53 +90,10 @@ Pod::Spec.new do |spec|
   spec.preserve_paths = ["Classes/macros/StringifyMacros"]
   # 3
   spec.pod_target_xcconfig = {
-    'OTHER_SWIFT_FLAGS' => '-load-plugin-executable ${PODS_ROOT}/StringifyMarco/Classes/macros/StringifyMacros#StringifyMacros'
+    'OTHER_SWIFT_FLAGS' => '-Xfrontend -load-plugin-executable -Xfrontend ${PODS_ROOT}/StringifyMarco/Classes/macros/StringifyMacros#StringifyMacros'
   }
   # 4
   spec.user_target_xcconfig = {
-    'OTHER_SWIFT_FLAGS' => '-load-plugin-executable ${PODS_ROOT}/StringifyMarco/Classes/macros/StringifyMacros#StringifyMacros'
+    'OTHER_SWIFT_FLAGS' => '-Xfrontend -load-plugin-executable -Xfrontend ${PODS_ROOT}/StringifyMarco/Classes/macros/StringifyMacros#StringifyMacros'
   }
-  # spec.exclude_files = "Classes/Exclude"
-
-  # spec.public_header_files = "Classes/**/*.h"
-
-
-  # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  A list of resources included with the Pod. These are copied into the
-  #  target bundle with a build phase script. Anything else will be cleaned.
-  #  You can preserve files from being cleaned, please don't preserve
-  #  non-essential files like tests, examples and documentation.
-  #
-
-  # spec.resource  = "icon.png"
-  # spec.resources = "Resources/*.png"
-
-  # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"
-
-
-  # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  Link your library with frameworks, or libraries. Libraries do not include
-  #  the lib prefix of their name.
-  #
-
-  # spec.framework  = "SomeFramework"
-  # spec.frameworks = "SomeFramework", "AnotherFramework"
-
-  # spec.library   = "iconv"
-  # spec.libraries = "iconv", "xml2"
-
-
-  # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  #
-  #  If your library depends on compiler flags you can set them in the xcconfig hash
-  #  where they will only apply to your library. If you depend on other Podspecs
-  #  you can include multiple dependencies to ensure it works.
-
-  # spec.requires_arc = true
-
-  # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # spec.dependency "JSONKit", "~> 1.4"
-
 end
